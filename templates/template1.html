@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block title %}
+        <title>Airmed</title>
+    {% endblock %}
+
+    {% block import %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    {% endblock %}
+
+    <style>
+        html, body {
+            overflow-x: hidden;
+        }
+        body {
+            background-size: 100vw 100vh;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+        body {
+            background: linear-gradient(135deg, #5aa9e6, #d87dbd);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+
+    {% block style %}
+
+    {% endblock %}
+
+</head>
+<body>
+    {% block navbar %}
+    <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+                <i class="bi bi-heart-pulse-fill me-2"></i>
+                <h3>AIRMED</h3>
+            </a>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center" href="{{ url_for('about') }}">
+                        <i class="fas fa-user me-1"></i><span class="navtext">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item d-flex align-items-center">
+                    <span class="separator">|</span>
+                </li>
+                <li class="nav-item text">
+                    <a class="nav-link d-flex align-items-center" href="{{ url_for('login') }}">
+                        <i class="fas fa-sign-out-alt me-1"></i><span class="navtext">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {% endblock %}
+
+    {% block site %}
+
+    {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

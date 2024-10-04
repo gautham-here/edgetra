@@ -1,0 +1,159 @@
+{% extends 'template1.html' %}
+
+{% block title %}
+    <title>AirMed</title>
+{% endblock %}
+
+{% block style %}
+<style>
+
+.medair {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 100px;
+}
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.image-container > .translucent-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 230, 200, 0.2);
+    border-radius: 100px 0px 0px 100px; 
+    z-index: 1;
+}
+
+.highlight-image {
+    position: relative;
+    z-index: 2; 
+    width: 100%; 
+    height: auto; 
+}
+
+.navbar .nav-link {
+    font-size: 1.25rem;
+    padding: 0.5rem 1rem;
+}
+
+.navbar .nav-link i {
+    font-size: 1.5rem;
+}
+
+.navbar .navtext {
+    font-size: 1.25rem;
+    font-weight: bold; 
+    margin-left: 5px; 
+}
+.separator {
+    color: white;
+    font-size: 1.5rem;
+    padding: 0 15px; 
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Copperplate&display=swap');
+
+.airmed-title {
+font-family: 'Copperplate', Arial, sans-serif;
+font-size: 5rem;
+font-weight: bold;
+color: white;
+text-transform: uppercase;
+margin: 0 auto;
+width: 100%;
+display: inline-block;
+}
+
+.site-desc p{
+font-size: 1.85rem;
+font-weight: bold;
+color: white;
+}
+
+hr.rounded {
+    border-top: 8px solid white;
+    border-radius: 5px;
+  }
+
+.model-accuracy {
+    font-size: 3.5rem;
+    text-align: center;
+    margin: 20px 0;
+    font-weight: bold;
+
+    font-family: 'Copperplate', Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(135deg, #08084d, #840101);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+
+    margin: 0 auto;
+    width: 100%;
+    display: inline-block;
+}
+
+.developer-link {
+text-decoration: none;
+color: white;
+font-weight: bold;
+}
+
+.developer-link:hover {
+color: #0077b5;
+}
+
+.fab.fa-linkedin {
+color: #0077b5;
+font-size: 2rem;
+}
+
+.plain-link {
+text-decoration: none;
+color: white;
+font-weight: bold;
+font-size: 30px;
+}
+
+.plain-link:hover {
+color: lightgray;
+}
+
+.container {
+max-width: 800px;
+margin: auto;
+}
+</style>
+{% endblock %}
+
+{% block site %}
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-lg-7 col-md-12">
+                <div class="translucent-box p-4">
+                    <div class="welcome-title text-center">
+                        <h1 class="airmed-title">About the site</h1>
+                    </div>
+                    <br>
+                    <div class="site-desc">
+                        <p>We have a Machine Learning model that gets the symptoms as input and finds out the possible disease. This makes it convenient for the patient to get an appointment and the doctor to have a better idea before the consultation.</p>
+                    </div>
+                    <hr class="rounded">
+                    <br><br>
+                    <div class="model-accuracy">Our Model’s Accuracy: 100%</div>
+                </div>
+                <div class="text-center mt-5">
+                    <a href="{{ url_for('about') }}" class="plain-link">See our code for more details [GitHub to be linked here soon]</a>
+                </div>
+            </div>
+
+            <div class="col-lg-5 col-md-12 d-flex justify-content-center align-items-center image-container">
+                <div class="translucent-box"></div>
+                <img src="static/logo.png" alt="Your Image" class="highlight-image">
+            </div>
+        </div>
+    </div>
+{% endblock %}
