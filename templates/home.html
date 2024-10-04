@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedAir</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Font Awesome for Additional Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles1.css') }}">
+    <style>
+        /* Custom Gradient Background */
+        body {
+            background: linear-gradient(135deg, #5aa9e6, #d87dbd);
+            height: auto;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+        <div class="container-fluid">
+            <!-- Left most element: bi bi-heart-pulse-fill icon and MedAir text -->
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <i class="bi bi-heart-pulse-fill me-2"></i>
+                <h3>MedAir</h3>
+            </a>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-user"></i><label color="white"><b>&nbsp;&nbsp;Dashboard </i></b></a>
+                </li>
+                <li class="nav-item" color="#555555"> <h3> | </h3> </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i><label color="white"><b>&nbsp;&nbsp;Logout </i></b></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="title-section">
+            <h1 size="60px" font="Garamond" > AIRMED </h1>
+            <p>Developed by <span>Team Edgetra</span></p>
+            <div class="team">
+                <p>Gautham R</p>
+                <p>Nukilan J</p>
+                <p>Lokesh R</p>
+                <p>Pavan P</p>
+            </div>
+        </div>
+        <div class="logo-section">
+            <img src="static/logo.png" alt="Edgetra Logo">
+            <p>EDGETRA</p>
+            <p>DEPLOYING TALENTS</p>
+        </div>
+    </div>
+    <div class="footer">
+        <a href="#">Click here to see how this site works</a>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
