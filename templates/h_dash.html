@@ -1,0 +1,245 @@
+{% extends 'template1.html' %}
+
+{% block style %}
+<style>
+    html, body {
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #5aa9e6, #d87dbd);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    
+    .loginhead {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 80px;
+        font-weight: bold;
+        color: white;
+        margin-left: 28%;
+    }
+
+    .image-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .input-box{
+        width: 50em;
+        margin: auto;
+    }
+
+    .image-container > .translucent-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 230, 200, 0.2);
+        border-radius: 100px 0px 0px 100px;
+        z-index: 1;
+    }
+
+    .highlight-image {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: auto;
+    }
+
+    .navbar .nav-link {
+        font-size: 1.25rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .navbar .nav-link i {
+        font-size: 1.5rem;
+    }
+
+    .navbar .navtext {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-left: 5px;
+    }
+
+    .developer-link {
+        text-decoration: none;
+        color: white;         
+        font-weight: bold;
+        font-size: 1.25rem;
+    }
+
+    .developer-link:hover {
+        color: #0077b5;
+    }
+
+    .plain-link {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+    }
+
+    .form-control {
+        background-color: rgba(255, 255, 255, 0.05); 
+        color: white;
+        border: 1px solid white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 0.75rem 1rem; 
+        font-size: 0.9rem; 
+    }
+
+    .form-label{
+        color: white;
+        font-weight: bold;
+        margin-left: 30%;
+        font-size: 1.5rem;
+    }
+
+    .form-control:focus {
+        background-color: rgba(255, 255, 255, 0.1); 
+        color: white;
+        border: 1px solid white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem; 
+    }
+
+    .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .plain-link:hover {
+        color: lightgray;
+        }
+        
+    .container {
+        max-width: 800px;
+        margin: auto;
+    }
+
+    .login-button{
+        margin-left: 46%;
+    }
+
+    .signup-button{
+        margin-left: 39%;
+    }
+
+    .navbar .nav-link {
+        font-size: 1.25rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .navbar .navtext {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+    .separator {
+        color: white;
+        font-size: 1.5rem;
+        padding: 0 15px;
+    }
+
+    .form-control {
+        margin-bottom: 10px;
+    }
+
+    .translucent-box {
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    hr.rounded {
+        border-top: 8px solid white;
+        border-radius: 5px;
+      }
+
+    .info-box {
+        background-color: rgba(255, 255, 255, 0.15);
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+    .hospital-info{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 50px;
+        font-weight: bold;
+        color: white;
+        margin-left: 28%;
+    }
+    option{
+        background-color: black;
+    }
+    .text-info{
+        font-size: 22px;
+        font-weight: bold;
+        color: white !important;
+        margin-left: 37%;
+    }
+    .adddoc{
+        margin-left: 45%;
+    }
+</style>
+{% endblock %}
+
+{% block site %}
+<div class="form-container">
+    <br>
+    <div class="hospital-info">
+        Hospital Name: {{ hospital_name }}<br>
+        Hospital ID: {{ hospital_id }}
+    </div>
+    <br>
+    <div class="adddoc"><a class="btn btn-dark" href="{{ url_for('h_add') }}" role="button">Add doctors</a></div>
+    <br>
+    <form method="POST" action="{{ url_for('h_dash') }}">
+        <div class="mb-3">
+            <br>
+            <label for="doctor" class="form-label">Doctor ID</label>
+            <select class="form-select form-control input-box" id="doctor" name="doctor_id" required>
+                {% for doctor in doctors %}
+                    <option value="{{ doctor.id }}">{{ doctor.id }} - {{ doctor.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <br>
+        <div class="mb-3">
+            <label for="date" class="form-label">Appointment Date</label>
+            <input type="date" class="form-control input-box" id="date" name="appointment_date" required>
+        </div>
+        <div class="mb-3">
+            <div class="login-button">
+                <button type="submit" class="btn btn-dark btn-lg" margin="auto">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+<br>
+<hr class="rounded">
+    {% if appointments %}
+        <hr>
+        <h4 class="text-info">Appointment Details:</h4>
+        <ul>
+            {% for appointment in appointments %}
+                <li>
+                <div class="info-box mt-4">
+                    <h3 class="text-info">Doctor Specialty: {{ appointment.specialty }}</h3>
+                    <h6 class="text-info">Slot ID: {{ appointment.slot_id }}</h6>
+                    <h3 class="text-info">Timings: {{ appointment.start_time }} - {{ appointment.end_time }}</h3>
+                    <h2 class="text-info">Number of Patients Registered: {{ appointment.patients_registered }}</h2>
+                </div></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if patients_last_week %}
+        <p class="text-info">Number of Patients Last Week: {{ patients_last_week }}</p>
+        {% else %}
+        <p class="text-info">No data available for the previous week.</p>
+    {% endif %}
+
+{% endblock %}
